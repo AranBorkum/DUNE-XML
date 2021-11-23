@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY relsim "v09_35_00_01">
+<!ENTITY relreco1 "v09_35_00_01">
+<!ENTITY relreco2 "v09_35_00_01">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "aborkum_RadiologicalNeutrons_200cm_BackgroundExplorer_larfd">
+<!ENTITY tag "devel">
+]>
+
+<job>
+
+<project name="&name;">
+
+  <!-- Group -->
+  <group>dune</group>
+
+  <!-- Project size -->
+  <numevents>10000</numevents>
+
+  <!-- Operating System -->
+  <os>SL7</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- metadata parameters -->
+  <parameter name ="MCName">aborkum_RadiologicalNeutrons_200cm_BackgroundExplorer_larfd</parameter>
+  <parameter name ="MCDetectorType">10kt</parameter>
+  <parameter name ="MCGenerators">SingleGen</parameter>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&relsim;</tag>
+    <qual>e20:prof</qual>
+    <local>/pnfs/dune/resilient/users/aborkum/test.tar</local>
+  </larsoft>
+
+
+  <stage name="ANA">
+    <maxfluxfilemb>0</maxfluxfilemb>
+    <fcl>prodbackground_neutron_Rock_Late_U_Total_LArG4Ana.fcl</fcl>
+    <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/ana/&name;</outdir>
+    <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/ana/&name;</workdir>
+    <output>prodbackground_neutron_BckExp_larfd_${PROCESS}_%tc_ana.root</output>
+    <numjobs>100</numjobs>
+    <disk>35GB</disk>
+    <memory>4000</memory>
+    <datatier>detector-simulated</datatier>
+    <defname>&name;_&tag;_ana</defname>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
+
+</job>
