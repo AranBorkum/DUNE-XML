@@ -3,9 +3,9 @@
 <!-- Production Project -->
 
 <!DOCTYPE project [
-<!ENTITY relsim "v09_38_00">
-<!ENTITY relreco1 "v09_38_00">
-<!ENTITY relreco2 "v09_38_00">
+<!ENTITY relsim "v09_39_01">
+<!ENTITY relreco1 "v09_39_01">
+<!ENTITY relreco2 "v09_39_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
 <!ENTITY name "aborkum_Solar_backgrounds_1x2x6">
@@ -40,11 +40,35 @@
     <local>/pnfs/dune/resilient/users/aborkum/test.tar</local>
   </larsoft>
 
+  <stage name="GEN">
+    <maxfluxfilemb>0</maxfluxfilemb>
+    <fcl>prodmarley_nue_spectrum_B8_radiological_dune10kt_1x2x6.fcl</fcl>
+    <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/gen/&name;</outdir>
+    <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/gen/&name;</workdir>
+    <output>marley_plus_radiologicals_B8_${PROCESS}_%tc_gen.root</output>
+    <numjobs>100</numjobs>
+    <disk>35GB</disk>
+    <memory>4000</memory>
+    <datatier>detector-simulated</datatier>
+    <defname>&name;_&tag;_gen</defname>
+  </stage>
+
+  <stage name="G4">
+    <maxfluxfilemb>0</maxfluxfilemb>
+    <fcl>supernova_g4_dune10kt_1x2x6_legacy.fcl</fcl>
+    <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/g4/&name;</outdir>
+    <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/g4/&name;</workdir>
+    <output>marley_plus_radiologicals_B8_${PROCESS}_%tc_g4.root</output>
+    <numjobs>100</numjobs>
+    <disk>35GB</disk>
+    <memory>4000</memory>
+    <jobsub> --expected-lifetime=24h </jobsub>
+    <datatier>detector-simulated</datatier>
+    <defname>&name;_&tag;_g4</defname>
+  </stage>
 
   <stage name="DETSIM">
     <maxfluxfilemb>0</maxfluxfilemb>
-    <fcl>prodmarley_nue_spectrum_B8_radiological_dune10kt_1x2x6.fcl</fcl>
-    <fcl>supernova_g4_dune10kt_1x2x6_legacy.fcl</fcl>
     <fcl>nonoise_nozs_detsim_supernova_dune10kt_1x2x6_legacy.fcl</fcl>
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/detsim/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/detsim/&name;</workdir>
@@ -53,7 +77,7 @@
     <disk>35GB</disk>
     <memory>4000</memory>
     <datatier>detector-simulated</datatier>
-    <defname>&name;_&tag;_ana</defname>
+    <defname>&name;_&tag;_detsim</defname>
   </stage>
 
   <stage name="ANA">
