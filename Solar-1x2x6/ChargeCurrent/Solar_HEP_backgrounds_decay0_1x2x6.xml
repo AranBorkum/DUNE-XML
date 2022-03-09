@@ -82,13 +82,13 @@
 
   <stage name="ANA">
     <maxfluxfilemb>0</maxfluxfilemb>
-    <fcl>addnoise_runsum_snanas.fcl</fcl>
+    <fcl>addnoise_runsum_snanas_fancyOptical.fcl</fcl>
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/ana/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/ana/&name;</workdir>
     <output>prodbackground_neutron_LowBck_larfd_${PROCESS}_%tc_ana.root</output>
     <numjobs>100</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6500</memory>
     <datatier>full-reconstructed</datatier>
     <output>&name;_${PROCESS}_%tc_ana.root</output>
     <defname>&name;_&tag;_ana</defname>

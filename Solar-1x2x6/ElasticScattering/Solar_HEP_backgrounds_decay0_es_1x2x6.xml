@@ -48,7 +48,7 @@
     <output>marley_plus_radiologicals_HEP_${PROCESS}_%tc_gen.root</output>
     <numjobs>100</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6500</memory>
     <datatier>detector-simulated</datatier>
     <defname>&name;_&tag;_gen</defname>
   </stage>
@@ -61,7 +61,7 @@
     <output>marley_plus_radiologicals_HEP_${PROCESS}_%tc_g4.root</output>
     <numjobs>100</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6500</memory>
     <jobsub> --expected-lifetime=48h </jobsub>
     <datatier>detector-simulated</datatier>
     <defname>&name;_&tag;_g4</defname>
@@ -75,20 +75,20 @@
     <output>marley_plus_radiologicals_HEP_${PROCESS}_%tc_detsim.root</output>
     <numjobs>100</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6500</memory>
     <datatier>detector-simulated</datatier>
     <defname>&name;_&tag;_detsim</defname>
   </stage>
 
   <stage name="ANA">
     <maxfluxfilemb>0</maxfluxfilemb>
-    <fcl>addnoise_runsum_snanas.fcl</fcl>
+    <fcl>addnoise_runsum_snanas_fancyOptical.fcl</fcl>
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/ana/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/ana/&name;</workdir>
     <output>prodbackground_neutron_LowBck_larfd_${PROCESS}_%tc_ana.root</output>
     <numjobs>100</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6500</memory>
     <datatier>full-reconstructed</datatier>
     <output>&name;_${PROCESS}_%tc_ana.root</output>
     <defname>&name;_&tag;_ana</defname>

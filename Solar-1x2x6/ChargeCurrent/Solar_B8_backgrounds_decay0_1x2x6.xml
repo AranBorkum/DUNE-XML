@@ -20,7 +20,7 @@
   <group>dune</group>
 
   <!-- Project size -->
-  <numevents>10000</numevents>
+  <numevents>20000</numevents>
 
   <!-- Operating System -->
   <os>SL7</os>
@@ -46,7 +46,7 @@
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/gen/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/gen/&name;</workdir>
     <output>marley_plus_radiologicals_B8_${PROCESS}_%tc_gen.root</output>
-    <numjobs>100</numjobs>
+    <numjobs>200</numjobs>
     <disk>35GB</disk>
     <memory>4000</memory>
     <datatier>detector-simulated</datatier>
@@ -59,7 +59,7 @@
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/g4/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/g4/&name;</workdir>
     <output>marley_plus_radiologicals_B8_${PROCESS}_%tc_g4.root</output>
-    <numjobs>100</numjobs>
+    <numjobs>200</numjobs>
     <disk>35GB</disk>
     <memory>4000</memory>
     <jobsub> --expected-lifetime=48h </jobsub>
@@ -73,7 +73,7 @@
     <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/detsim/&name;</outdir>
     <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/detsim/&name;</workdir>
     <output>marley_plus_radiologicals_B8_${PROCESS}_%tc_detsim.root</output>
-    <numjobs>100</numjobs>
+    <numjobs>200</numjobs>
     <disk>35GB</disk>
     <memory>4000</memory>
     <datatier>detector-simulated</datatier>
@@ -82,13 +82,14 @@
 
   <stage name="ANA">
     <maxfluxfilemb>0</maxfluxfilemb>
-    <fcl>addnoise_runsum_snanas.fcl</fcl>
-    <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/ana/&name;</outdir>
-    <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/ana/&name;</workdir>
+    <fcl>addnoise_runsum_snanas_fancyOptical.fcl</fcl>
+    <fcl>FullGeoAna_job.fcl</fcl>
+    <outdir>/pnfs/dune/scratch/users/aborkum/&relsim;/ana_fga/&name;</outdir>
+    <workdir>/pnfs/dune/scratch/users/aborkum/work/&relsim;/ana_fga/&name;</workdir>
     <output>prodbackground_neutron_LowBck_larfd_${PROCESS}_%tc_ana.root</output>
-    <numjobs>100</numjobs>
+    <numjobs>200</numjobs>
     <disk>35GB</disk>
-    <memory>4000</memory>
+    <memory>6000</memory>
     <datatier>full-reconstructed</datatier>
     <output>&name;_${PROCESS}_%tc_ana.root</output>
     <defname>&name;_&tag;_ana</defname>
